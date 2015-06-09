@@ -1,0 +1,7 @@
+{% if result.success %}
+    The data was successfuly loaded.
+{% else %}
+    The data was not loaded.
+{% endif %}
+Return code: {{ result.returnCode }}
+Return message: {{ result.returnMessage }}

@@ -1,0 +1,12 @@
+<html>
+    <head></head>
+    <body>
+        {% if result.success %}
+            The data was successfuly loaded.
+        {% else %}
+            The data was not loaded.
+        {% endif %}<br />
+        Return code: {{ result.returnCode }}<br />
+        Return message: {{ result.returnMessage }}<br />
+    </body>
+</html>

@@ -1,0 +1,4 @@
+services:
+    wassa.dataloader.mailer:
+        class: Wassa\DataLoaderBundle\Mailer\Mailer
+        arguments: [@mailer, @templating]
