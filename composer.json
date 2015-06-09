@@ -1,0 +1,16 @@
+{
+  "name" : "wassa/dataloader-bundle",
+  "description" : "Wassa Data Loader Bundle",
+  "type" : "symfony-bundle",
+  "license" : [
+    "Proprietary"
+  ],
+  "require" : {
+    "php": ">=5.4"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "Wassa\\DataLoaderBundle" : "Wassa/DataLoaderBundle"
+    }
+  }
+}
