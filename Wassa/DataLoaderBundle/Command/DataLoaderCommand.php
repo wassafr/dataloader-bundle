@@ -24,7 +24,7 @@ class DataLoaderCommand extends ContainerAwareCommand
         $this
             ->setName('wassa:dataloader:load')
             ->setDescription('Load data')
-            ->addArgument('class', InputArgument::REQUIRED, 'Class that will load the data')
+            ->addArgument('service', InputArgument::REQUIRED, 'Service that will load the data')
             ->addOption('sendmail', null, InputOption::VALUE_NONE, 'Defines if a mail should be sent after data load')
             ->addOption('to', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Recipients of the mail report')
             ->addOption('from', null, InputOption::VALUE_REQUIRED, 'Sender of the mail report');
@@ -33,16 +33,18 @@ class DataLoaderCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Get arguments and options
-        $dataLoaderClass = $input->getArgument('class');
+        $dataLoaderService = $input->getArgument('service');
         $shouldSendMail = $input->getOption('sendmail');
         $to = $input->getOption('to');
         $from = $input->getOption('from');
         $container = $this->getContainer();
 
         // Get class from shortcurt notation
-        list($bundle, $class) = $this->parseShortcutNotation($dataLoaderClass);
+        /*list($bundle, $class) = $this->parseShortcutNotation($dataLoaderClass);
         $className = "$bundle\\$class";
-        $dataLoader = new $className;
+        $dataLoader = new $className;*/
+
+        $dataLoader = $this->getContainer()->get($dataLoaderService);
 
         // Start data loading
         $result = $dataLoader->run();
